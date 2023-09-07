@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-07 13:33+0200\n"
+"PO-Revision-Date: 2023-08-13 14:26+0330\n"
+"Last-Translator:   <hamid@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.9.9\n"
+
+#: .\store\models.py:10
+msgid "name"
+msgstr "نام"
+
+#: .\store\models.py:12 .\store\models.py:52
+msgid "slug"
+msgstr "اسلاگ"
+
+#: .\store\models.py:17
+msgid "categories"
+msgstr "دسته بندی ها"
+
+#: .\store\models.py:18 .\store\models.py:43
+msgid "category"
+msgstr "دسته بندی"
+
+#: .\store\models.py:46
+msgid "title"
+msgstr "نام"
+
+#: .\store\models.py:48
+msgid "brand"
+msgstr "برند"
+
+#: .\store\models.py:50
+msgid "description"
+msgstr "توضیحات"
+
+#: .\store\models.py:54
+msgid "price"
+msgstr "قیمت"
+
+#: .\store\models.py:56
+msgid "image"
+msgstr "عکس"
+
+#: .\store\models.py:58
+msgid "datetime_created"
+msgstr "زمان ساخت"
+
+#: .\store\models.py:60
+msgid "datetime_modified"
+msgstr "زمان تغییر"
+
+#: .\store\models.py:64
+msgid "products"
+msgstr "محصولات"
+
+#: .\store\models.py:65
+msgid "product"
+msgstr "محصول"
+
+#: .\store\templates\store\base.html:41
+msgid "BlueBerry"
+msgstr ""
+
+#: .\store\templates\store\base.html:80
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+#: .\store\templates\store\base.html:88
+msgid "All"
+msgstr "همه ی محصولات"
+
+#: .\store\templates\store\base.html:117
+msgid "Search for products"
+msgstr "جست و جوی محصولات"
+
+#: .\store\templates\store\base.html:183
+msgid "Language"
+msgstr "زبان"
+
+#: .\store\templates\store\base.html:191
+msgid "English"
+msgstr "انگلیسی"
+
+#: .\store\templates\store\base.html:197
+msgid "Persian"
+msgstr "فارسی"
+
+#: .\store\templates\store\base.html:228
+msgid "Dashboard"
+msgstr "اکانت"
+
+#: .\store\templates\store\base.html:236
+msgid "Register"
+msgstr "ثبت نام"
+
+#: .\store\templates\store\base.html:249
+msgid "Logout"
+msgstr "خروج"
+
+#: .\store\templates\store\base.html:258
+msgid "Login"
+msgstr "ورود"
+
+#: .\store\templates\store\product-info.html:46
+msgid "Price"
+msgstr "قیمت"
+
+#: .\store\templates\store\product-info.html:50
+#: .\store\templates\store\product-info.html:54
+#: .\store\templates\store\store.html:108
+#: .\store\templates\store\store.html:116
+msgid "Toman"
+msgstr "تومان"
+
+#: .\store\templates\store\product-info.html:71
+#: .\store\templates\store\product-info.html:94
+msgid "Qty"
+msgstr "تعداد"
+
+#: .\store\templates\store\product-info.html:119
+msgid "Add to cart"
+msgstr "افزودن به سبد خرید"
+
+#: .\store\templates\store\store.html:62
+msgid "sort"
+msgstr "مرتب سازی"
+
+#: .\store\templates\store\store.html:66
+msgid "ascending price"
+msgstr "قیمت: از ارزان به گران"
+
+#: .\store\templates\store\store.html:67
+msgid "descending price"
+msgstr "قیمت: از گران به ارزان"
+
+#: .\store\templates\store\store.html:68
+msgid "ascending time"
+msgstr "زمان ایجاد: از قدیم به جدید"
+
+#: .\store\templates\store\store.html:69
+msgid "descending time"
+msgstr "زمان ایجاد: از جدید به قدیم"
+
+#: .\store\templates\store\store.html:76
+msgid "All products"
+msgstr "همه ی محصولات"
+
+#: .\store\templates\store\store.html:129
+msgid "Not Found"
+msgstr "محصولی یافت نشد!"
+
+#: .\store\templates\store\store.html:141
+msgid "first"
+msgstr "اولین"
+
+#: .\store\templates\store\store.html:142
+msgid "previous"
+msgstr "قبلی"
+
+#: .\store\templates\store\store.html:146
+msgid "Page"
+msgstr "صفحه"
+
+#: .\store\templates\store\store.html:146
+msgid "of"
+msgstr "از"
+
+#: .\store\templates\store\store.html:150
+msgid "next"
+msgstr "بعدی"
+
+#: .\store\templates\store\store.html:151
+msgid "last"
+msgstr "آخرین"
+
+#~ msgid "categories"
+#~ msgstr "دسته بندی ها"
+
+#~ msgid "Create an account"
+#~ msgstr "ثبت نام"
