@@ -1,0 +1,284 @@
+
+{% include "store/base.html" %}
+
+
+{% load static %}
+
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+
+{% load product_tags %}
+
+{% load mathfilters %}
+
+
+{% block content %}
+
+<main class="pt-5">
+    
+    <div class="container" dir="auto">
+      
+      <h1 class="h5"> {% trans 'Shopping cart' %} </h1>
+
+	    <hr>
+
+      <!-- LP -->
+
+      {% for item in cart %}
+
+      {% with product=item.product %}
+
+
+      <br>
+
+      <div class="row mb-4 border product-item">
+        
+        <div class="col-md-3 col-lg-2 order-md-first bg-light">
+        
+            <img class="img-fluid mx-auto d-block" width="200px" alt="Responsive image" src="{{product.image.url}}" style="height:200px;"> <!-- Product image -->
+        
+        </div>
+
+        
+        <div class="col-md-9 col-lg-10 ps-md-3 ps-lg-10">
+          
+          <a href="{{product.get_absolute_url}}" class="text-info text-decoration-none"> <!-- Product get absolute url -->
+          
+            <h1 class="h5 pt-2"> {{product.title}}<!-- Product title --> </h1>
+          
+          </a>
+          
+          <div class="border">
+            
+            <div class="col border-bottom">
+              
+                <div class="row p-3">
+              
+                <div class="col-6"> {% trans 'Product' %} </div>
+              
+                {% if LANGUAGE_CODE == 'fa' %}
+
+                  <div class="col-6 text-end"><span class="h6 fw-bold"> {{product.price|mul:item.qty|persian_numbers }} {% trans 'Toman' %} </span></div>
+            
+                  {% else %}
+
+                  <div class="col-6 text-end"><span class="h6 fw-bold"> {{product.price|mul:item.qty }} {% trans 'Toman' %} </span></div>
+
+                {% endif %}
+              </div>
+            
+            </div>
+            
+            <div class="col">
+              
+              <div class="row p-3">
+                
+                <div class="col-12">
+                  
+                  <label for="select">{% trans 'Qty' %}</label>
+
+                  &nbsp; 
+
+                  {% if LANGUAGE_CODE == 'fa' %}
+
+                    <select id="select{{product.id}}">
+                  
+                      <option selected>
+                  
+                          {{item.qty|persian_numbers}}
+                  
+                      </option>
+                  
+                      <option value="">{{1|persian_numbers}}</option>
+                  
+                      <option value="">{{2|persian_numbers}}</option>
+                  
+                      <option value="">{{3|persian_numbers}}</option>
+                  
+                      <option value="">{{4|persian_numbers}}</option>
+                  
+                    </select>
+
+                    {% else %}
+
+                    <select id="select{{product.id}}">
+                  
+                      <option selected>
+                  
+                          {{item.qty}}
+                  
+                      </option>
+                  
+                      <option value="">{{1}}</option>
+                  
+                      <option value="">{{2}}</option>
+                  
+                      <option value="">{{3}}</option>
+                  
+                      <option value="">{{4}}</option>
+                  
+                    </select>
+
+                  {% endif %}
+                    
+                  <br> <br>
+
+                  <button type="button" data-index="{{product.id}}"
+                    class="btn btn-primary btn-sm update-button">
+                    {% trans 'Update' %}
+                  
+                  </button>
+                  
+                  &nbsp;
+
+                  <button type="button" data-index="{{product.id}}"
+                    class="btn btn-danger btn-sm delete-button">
+                    {% trans 'Delete' %}
+        
+                  </button>
+        
+
+                </div>
+        
+            </div>
+        
+            </div>
+    
+            </div>
+    
+        </div>
+      
+    </div>
+    
+    {% endwith %}
+    
+    {% endfor %}
+
+
+    <!-- LP -->
+
+
+      <div class="col-12 text-end" dir="auto">
+
+        {% if LANGUAGE_CODE == 'fa' %}
+
+          <div class="h6 fw-bold"> {% trans 'Total price:' %} <div id="total" class="d-inline-flex"> {{cart.get_total|persian_numbers}} {% trans 'Toman' %} </div></div>
+
+          {% else %}
+
+          <div class="h6 fw-bold">  {% trans 'Total price:' %} <div id="total" class="d-inline-flex"> {{cart.get_total}} {% trans 'Toman' %} </div></div>
+
+        {% endif %}
+
+        <br>
+
+        <a href="{% url 'checkout' %}" class="btn btn-primary my-2"> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; {% trans 'Proceed to checkout' %} </a>
+        
+      </div>
+
+    </div>
+  
+    <br>
+
+    <br>
+
+ </main>
+
+ <script>
+
+  // Delete button
+
+    $(document).on('click', '.delete-button', function(e){
+
+      e.preventDefault();
+
+      $.ajax({
+
+          type: 'POST',
+          url: '{% url "cart-delete" %}',
+          data: {
+
+              product_id: $(this).data('index'),
+              csrfmiddlewaretoken: "{{csrf_token}}",
+              action: 'post'
+
+          },
+
+          success: function(json){
+
+              //console.log(json)
+
+              location.reload();
+              
+
+              document.getElementById("cart-qty").textContent = json.qty
+
+              document.getElementById("total").textContent = json.total
+
+
+          },
+
+          error: function(xhr, errmsg, err){
+
+
+          }
+
+      });
+
+
+  })
+
+
+  // Update button
+
+  $(document).on('click', '.update-button', function(e){
+
+    e.preventDefault();
+
+    var theproductid = $(this).data('index');
+
+    $.ajax({
+
+        type: 'POST',
+        url: '{% url "cart-update" %}',
+        data: {
+
+            product_id: $(this).data('index'),
+            product_quantity: $('#select' + theproductid + ' option:selected').text(),
+            csrfmiddlewaretoken: "{{csrf_token}}",
+            action: 'post'
+
+        },
+
+        success: function(json){
+
+            //console.log(json)
+
+            location.reload();
+            
+
+            document.getElementById("cart-qty").textContent = json.qty
+
+            document.getElementById("total").textContent = json.total
+
+
+        },
+
+        error: function(xhr, errmsg, err){
+
+
+        }
+
+    });
+
+
+})
+
+
+
+ </script>
+
+
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% load i18n %}
+{% autoescape off %}
+
+{% blocktranslate %}Hi,{% endblocktranslate %}
+
+{% blocktranslate %}Thank you for registering on our website.{% endblocktranslate %}
+
+{% blocktranslate %}Please verify your email by clicking the link below:{% endblocktranslate %}
+
+
+http://{{domain}}{% url 'email-verification' uidb64=uid token=token %}
+
+
+{% endautoescape %}

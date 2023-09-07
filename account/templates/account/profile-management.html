@@ -1,0 +1,103 @@
+
+{% include "store/base.html" %}
+
+{% load static %}
+
+{% load i18n %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+    <style>
+
+
+        body{
+
+
+            background-color: gray;
+
+        }
+
+
+
+    </style>
+
+
+
+
+    <body>
+
+        <br>
+
+        <div class="container bg-white shadow-md p-5 form-layout" dir="auto">
+
+            <h3> <i class="fa fa-address-book" aria-hidden="true"></i> &nbsp; {% trans 'Profile management' %} </h3>
+
+            <p> {% trans 'Manage your account effectively.' %} </p>
+
+            <hr>
+            
+
+
+        </div>
+
+        <br>
+
+        <div class="container bg-white shadow-md p-5 form-layout" dir="auto">
+
+            <h4> {% trans 'Update your account' %} </h4>
+
+            <p> {% trans 'Feel free to make changes to your account.' %} </p>
+
+            <hr>
+
+            <br>
+
+            <form method="POST" autocomplete="off">
+
+                {% csrf_token %}
+
+                {{user_form.username|as_crispy_field}}
+
+
+                <br> <br>
+
+
+                {{user_form.email|as_crispy_field}}
+
+                <br> <br>
+
+                
+                <button type="submit" class="btn btn-primary navbar-btn text-white"> &nbsp; {% trans 'Update your account' %} </button>
+
+
+            </form>
+
+
+        </div>
+
+        <br>
+
+
+        <div class="container bg-white shadow-md p-5 form-layout" dir="auto">
+
+            <h4> {% trans 'Delete your account' %} </h4>
+
+            <p> {% trans 'Proceed if you wish to delete your account.' %}</p>
+
+            <hr>
+
+            <a class="btn btn-primary navbar-btn text-white" type="button"  href="{% url 'delete-account' %}"> {% trans 'Delete your account' %} </a>
+
+        </div>
+
+
+
+    </body>
+
+    <br> <br>
+
+
+{% endblock %}

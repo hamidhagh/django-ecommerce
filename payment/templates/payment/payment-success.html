@@ -1,0 +1,54 @@
+{% include "store/base.html" %}
+
+{% load static %}
+
+{% load i18n %}
+
+{% block content %}
+
+<style>
+
+
+    body{
+
+
+        background-color: gray;
+
+    }
+
+
+
+</style>
+
+<body>
+
+    <br>
+
+    <div class="container bg-white shadow-md p-5 form-layout" dir="auto">
+
+        <div class="text-center">
+            
+            <i class="fa fa-check fa-3x text-success" aria-hidden="true"></i>
+
+            <br> <br>
+   
+
+            <h5> <strong> {% trans 'payment success!' %} </strong> </h5>
+
+            <hr>
+
+            <h5> {% trans 'Thank you for your purchase!' %} </h5>
+
+            <br>
+
+            <h5> {% trans 'We have emailed you your order information.' %} </h5>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+
+{% endblock %}
